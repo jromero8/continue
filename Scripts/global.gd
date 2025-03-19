@@ -13,4 +13,5 @@ func _process(delta: float) -> void:
 
 func die():
 	print("die")
+	death_color_rect.position = MainCamera2D.get_instance().global_position - Vector2(5000, 5000) 
 	death_color_rect.get_node("AnimationPlayer").current_animation = "death"

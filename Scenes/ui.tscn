@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3 uid="uid://busomsrty8ghy"]
+
+[ext_resource type="Script" path="res://Scripts/ui.gd" id="1_7jwbj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4608t"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7jwbj")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ContinueYesNoPanel" type="PanelContainer" parent="CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -135.0
+offset_top = -44.0
+offset_right = 135.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_4608t")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ContinueYesNoPanel"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="CanvasLayer/ContinueYesNoPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.372549, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "CONTINUE?"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ContinueYesNoPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 20
+
+[node name="ContinueYes" type="Button" parent="CanvasLayer/ContinueYesNoPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "YES"
+
+[node name="ContinueNo" type="Button" parent="CanvasLayer/ContinueYesNoPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "NO"
+
+[connection signal="button_down" from="CanvasLayer/ContinueYesNoPanel/VBoxContainer/HBoxContainer/ContinueYes" to="." method="_on_continue_yes_button_down"]
+[connection signal="button_down" from="CanvasLayer/ContinueYesNoPanel/VBoxContainer/HBoxContainer/ContinueNo" to="." method="_on_continue_no_button_down"]

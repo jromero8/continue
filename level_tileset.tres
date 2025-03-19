@@ -1,0 +1,25 @@
+[gd_resource type="TileSet" load_steps=6 format=3 uid="uid://bjn6oys3me4dy"]
+
+[ext_resource type="Texture2D" uid="uid://bpdeyrxqyvd8n" path="res://Images/wall.png" id="1_2cakn"]
+[ext_resource type="Texture2D" uid="uid://coo2j43ebj2v4" path="res://Images/spike.png" id="2_80y8h"]
+
+[sub_resource type="GDScript" id="GDScript_esswi"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ouxya"]
+texture = ExtResource("1_2cakn")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_po87c"]
+texture = ExtResource("2_80y8h")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[resource]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+physics_layer_1/collision_layer = 2
+sources/2 = SubResource("TileSetAtlasSource_ouxya")
+sources/3 = SubResource("TileSetAtlasSource_po87c")
+script = SubResource("GDScript_esswi")

@@ -12,6 +12,10 @@ static func get_instance() -> Camera2D:
 func _process(delta: float) -> void:
 	var p = Player.get_instance()
 	if p != null:
-		global_position = p.global_position
-	if global_position.y > 100:
-		global_position.y = 100
+		
+		if p.dead:
+			global_position = Vector2(global_position.x, p.global_position.y)
+		else:
+			global_position = p.global_position
+	if global_position.y > 0:
+		global_position.y = 0

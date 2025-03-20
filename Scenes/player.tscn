@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://dorbym88j06wl" path="res://Images/Player/Cyborg_death.png" id="5_5hb3o"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8fle4"]
+radius = 15.0
+height = 60.0
 
 [sub_resource type="Animation" id="Animation_gibij"]
 length = 0.001
@@ -221,11 +223,12 @@ _data = {
 script = ExtResource("1_w65jj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -15)
+position = Vector2(-1, -30)
 shape = SubResource("CapsuleShape2D_8fle4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -24)
+position = Vector2(0, -48)
+scale = Vector2(2, 2)
 texture = ExtResource("1_ifumy")
 hframes = 6
 

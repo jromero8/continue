@@ -2,8 +2,8 @@ class_name Player
 extends CharacterBody2D
 
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -450.0
+const SPEED = 500.0
+const JUMP_VELOCITY = -1000.0
 const COYOTE_TIME = 100
 
 static var instance : Player = null

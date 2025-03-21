@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=3 uid="uid://blgtjn5wg0deh"]
+
+[ext_resource type="Texture2D" uid="uid://boo1faykop5dt" path="res://Images/circular_blade.png" id="1_445pk"]
+[ext_resource type="Script" path="res://Scripts/death_trigger.gd" id="2_fy1la"]
+
+[sub_resource type="Animation" id="Animation_y8ypa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_gcr3s"]
+resource_name = "rotate"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nnx0a"]
+_data = {
+"RESET": SubResource("Animation_y8ypa"),
+"rotate": SubResource("Animation_gcr3s")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8k8rp"]
+radius = 13.0
+
+[node name="CircularBlade" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_445pk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nnx0a")
+}
+autoplay = "rotate"
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("2_fy1la")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_8k8rp")

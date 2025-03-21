@@ -1,9 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://busomsrty8ghy"]
+[gd_scene load_steps=5 format=3 uid="uid://busomsrty8ghy"]
 
 [ext_resource type="Script" path="res://Scripts/ui.gd" id="1_7jwbj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4608t"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="InputEventAction" id="InputEventAction_nvlui"]
+action = &"ui_accept"
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_lc8qf"]
+events = [SubResource("InputEventAction_nvlui")]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -51,6 +58,7 @@ theme_override_constants/separation = 20
 [node name="ContinueYes" type="Button" parent="CanvasLayer/ContinueYesNoPanel/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
+shortcut = SubResource("Shortcut_lc8qf")
 text = "YES"
 
 [node name="ContinueNo" type="Button" parent="CanvasLayer/ContinueYesNoPanel/VBoxContainer/HBoxContainer"]
@@ -58,5 +66,5 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "NO"
 
-[connection signal="button_down" from="CanvasLayer/ContinueYesNoPanel/VBoxContainer/HBoxContainer/ContinueYes" to="." method="_on_continue_yes_button_down"]
-[connection signal="button_down" from="CanvasLayer/ContinueYesNoPanel/VBoxContainer/HBoxContainer/ContinueNo" to="." method="_on_continue_no_button_down"]
+[connection signal="pressed" from="CanvasLayer/ContinueYesNoPanel/VBoxContainer/HBoxContainer/ContinueYes" to="." method="_on_continue_yes_pressed"]
+[connection signal="pressed" from="CanvasLayer/ContinueYesNoPanel/VBoxContainer/HBoxContainer/ContinueNo" to="." method="_on_continue_no_pressed"]

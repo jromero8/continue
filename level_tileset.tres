@@ -1,6 +1,7 @@
-[gd_resource type="TileSet" load_steps=4 format=3 uid="uid://bjn6oys3me4dy"]
+[gd_resource type="TileSet" load_steps=6 format=3 uid="uid://bjn6oys3me4dy"]
 
 [ext_resource type="Texture2D" uid="uid://4ch6stooha2a" path="res://Images/level_tileset.png" id="1_7ttuq"]
+[ext_resource type="Texture2D" uid="uid://boo1faykop5dt" path="res://Images/circular_blade.png" id="2_hiqen"]
 
 [sub_resource type="GDScript" id="GDScript_esswi"]
 
@@ -92,9 +93,15 @@ texture_region_size = Vector2i(32, 32)
 7:8/0 = 0
 8:8/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qig5o"]
+texture = ExtResource("2_hiqen")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
 [resource]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 physics_layer_1/collision_layer = 2
 sources/0 = SubResource("TileSetAtlasSource_m4d8l")
+sources/1 = SubResource("TileSetAtlasSource_qig5o")
 script = SubResource("GDScript_esswi")

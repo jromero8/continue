@@ -9,11 +9,11 @@ func hide_continue_panel() -> void:
 	continue_yes_no_panel.visible = false
 
 
-func _on_continue_yes_button_down() -> void:
+func _on_continue_yes_pressed() -> void:
 	hide_continue_panel()
 	Global.continue_game(true)
 
 
-func _on_continue_no_button_down() -> void:
+func _on_continue_no_pressed() -> void:
 	hide_continue_panel()
 	Global.continue_game(false)

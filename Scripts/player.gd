@@ -1,7 +1,7 @@
 class_name Player
 extends CharacterBody2D
 
-
+const BLOOD_SPLASH = preload("res://Scenes/blood_splash.tscn")
 const SPEED = 500.0
 const JUMP_VELOCITY = -1000.0
 const COYOTE_TIME = 100
@@ -41,7 +41,10 @@ func _physics_process(delta: float) -> void:
 		if direction:
 			velocity.x = direction * SPEED
 		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
+			velocity.x = move_toward(velocity.x, 0, SPEED * .5)
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity += get_gravity() * delta
 
 	move_and_slide()
 
@@ -71,6 +74,10 @@ func set_animation():
 		if animation_player.current_animation != "jump" && animation_player.current_animation != "":
 			animation_player.current_animation = "jump"
 	
-func die():
-	print("-")
-	dead = true
+func die(death_type : Global.DeathType):
+	if !dead:
+		dead = true
+		var b = BLOOD_SPLASH.instantiate()
+		get_parent().add_child(b)
+		b.global_position = global_position
+		sprite_2d.visible = false

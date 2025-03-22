@@ -10,13 +10,6 @@ func _ready() -> void:
 	rng = RandomNumberGenerator.new()
 	activate_blood()
 
-func _process(delta: float) -> void:
-	if Input.is_action_pressed("ui_accept"):
-		if Time.get_ticks_msec() > last_blood + 500:
-			last_blood = Time.get_ticks_msec()
-			activate_blood()
-
-
 func activate_blood():
 	for i in range(0, 30):
 		var b = BLOOD_DROP.instantiate()

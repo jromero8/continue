@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2axnvjugujao"]
+
+[ext_resource type="Script" path="res://Scripts/laser_part.gd" id="1_l40bl"]
+[ext_resource type="Texture2D" uid="uid://4ch6stooha2a" path="res://Images/level_tileset.png" id="2_bvk0m"]
+[ext_resource type="Script" path="res://Scripts/death_trigger.gd" id="3_ibe48"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a7li8"]
+size = Vector2(20, 30)
+
+[node name="LaserPart" type="Node2D"]
+script = ExtResource("1_l40bl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_bvk0m")
+hframes = 9
+vframes = 9
+frame = 8
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("3_ibe48")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_a7li8")

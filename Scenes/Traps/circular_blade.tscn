@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://blgtjn5wg0deh"]
 
-[ext_resource type="Texture2D" uid="uid://boo1faykop5dt" path="res://Images/circular_blade.png" id="1_445pk"]
-[ext_resource type="Script" path="res://Scripts/death_trigger.gd" id="2_fy1la"]
+[ext_resource type="Texture2D" uid="uid://boo1faykop5dt" path="res://Images/circular_blade.png" id="1_jxpfk"]
+[ext_resource type="Script" path="res://Scripts/death_trigger.gd" id="2_lkrs7"]
 
 [sub_resource type="Animation" id="Animation_y8ypa"]
 length = 0.001
@@ -47,7 +47,7 @@ radius = 13.0
 [node name="CircularBlade" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_445pk")
+texture = ExtResource("1_jxpfk")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -56,7 +56,7 @@ libraries = {
 autoplay = "rotate"
 
 [node name="Area2D" type="Area2D" parent="."]
-script = ExtResource("2_fy1la")
+script = ExtResource("2_lkrs7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_8k8rp")

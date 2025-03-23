@@ -10,6 +10,8 @@ func _ready() -> void:
 	Global.death_color_rect = death_color_rect
 	Global.level_started_time = Time.get_ticks_msec()
 	fill_tilemap(tile_map_layer)
+	Audio.stop_sound(AudioClass.AUDIO_CODE.LEVEL_1)
+	Audio.play_sound(AudioClass.AUDIO_CODE.LEVEL_1)
 
 
 func fill_tilemap(t : TileMapLayer):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://j26dy70htfcd"]
+[gd_scene load_steps=17 format=3 uid="uid://j26dy70htfcd"]
 
 [ext_resource type="Texture2D" uid="uid://d4g55nymvhkl7" path="res://Images/Player/Cyborg_run.png" id="1_ifumy"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_w65jj"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dh3xko6tl6ji5" path="res://Images/Player/Cyborg_idle.png" id="4_a1slp"]
 [ext_resource type="Texture2D" uid="uid://dorbym88j06wl" path="res://Images/Player/Cyborg_death.png" id="5_5hb3o"]
 [ext_resource type="Texture2D" uid="uid://7vm1mo8vpqqh" path="res://Images/Player/Cyborg_wall_slide.png" id="6_p7lc4"]
+[ext_resource type="Texture2D" uid="uid://dbv6pybfniosn" path="res://Images/Player/Cyborg_dash.png" id="7_llwjh"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8fle4"]
 radius = 15.0
@@ -252,9 +253,51 @@ tracks/2/keys = {
 "values": [1]
 }
 
+[sub_resource type="Animation" id="Animation_dmmr4"]
+resource_name = "dash"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_llwjh")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oj5wv"]
 _data = {
 "RESET": SubResource("Animation_gibij"),
+"dash": SubResource("Animation_dmmr4"),
 "die": SubResource("Animation_kqtjl"),
 "idle": SubResource("Animation_kuv17"),
 "jump": SubResource("Animation_5uhm7"),

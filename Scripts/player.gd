@@ -24,16 +24,17 @@ func _process(delta: float) -> void:
 	set_animation()
 
 func _physics_process(delta: float) -> void:
+	var gravity = get_gravity()
 	if !dead:
+		
 		# Add the gravity.
 		if is_on_floor():
 			last_grounded = Time.get_ticks_msec()
 		else:
-			velocity += get_gravity() * delta
-
-		# Handle jump.
-		if Input.is_action_just_pressed("ui_accept") and Time.get_ticks_msec() - last_grounded <= COYOTE_TIME:
-			velocity.y = JUMP_VELOCITY
+			velocity += gravity * delta
+		
+		if is_on_wall():
+			last_grounded = Time.get_ticks_msec()
 
 		# Get the input direction and handle the movement/deceleration.
 		# As good practice, you should replace UI actions with custom gameplay actions.
@@ -42,10 +43,17 @@ func _physics_process(delta: float) -> void:
 			velocity.x = direction * SPEED
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED * .5)
+		
+		# Handle jump.
+		if Input.is_action_just_pressed("ui_accept") and Time.get_ticks_msec() - last_grounded <= COYOTE_TIME:
+			velocity.y = JUMP_VELOCITY
+
+		if is_on_wall() and velocity.y > 200:
+			velocity.y = 200
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity += get_gravity() * delta
-
+		velocity += gravity * delta
+		
 	move_and_slide()
 
 func set_animation():
@@ -63,6 +71,9 @@ func set_animation():
 	if velocity.x < 0:
 		sprite_2d.flip_h = true
 		running = true;
+	if is_on_wall() and velocity.y > 0:
+		animation_player.current_animation = "wall_slide"
+		return
 		
 	if is_on_floor():
 		if running:
